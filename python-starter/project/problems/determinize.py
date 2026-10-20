@@ -50,7 +50,7 @@ class DeterminizeProblem(Problem):
     def determinize(self):
         symbols = sorted(self.alphabet)
 
-        start_set = frozenset([self.start])
+        start_set = frozenset([self.start])     # megvaltoztathatatlan halmaz
         names = {start_set: 0}   # halmaz -> sorszam
         order = [start_set]      # felfedezes sorrendje
         result = []              # (honnan, jel, hova)
@@ -61,7 +61,7 @@ class DeterminizeProblem(Problem):
             for symbol in symbols:
                 target = set()
                 for q in current:
-                    target |= self.transitions.get((q, symbol), set())
+                    target |= self.transitions.get((q, symbol), set())      # az eremenyt hozzaadja a target halmazhoz
                 if not target:
                     continue
                 target = frozenset(target)
