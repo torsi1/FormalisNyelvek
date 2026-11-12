@@ -132,7 +132,7 @@ class RegexProblem(Problem):
             if error_pids:
                 counts = Counter(error_pids)
                 max_pid, max_count = counts.most_common(1)[0]
-                results.append(f"{max_pid}={max_count} ({max_count} errors)")
+                results.append(f"PID={max_pid} ({max_count} errors)")
 
         elif rgx_num == 5:
             # 5. feladat: A fő szálon történt hibák (E) száma
