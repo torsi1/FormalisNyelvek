@@ -49,31 +49,31 @@ class RegexProblem(Problem):
             count_2 = sum(1 for l in self.lines if p2.search(l))
 
             # 1.3: Összes sor, ami 51 másodperckor jött létre
-            p3 = re.compile(r":\d{2}:51")
+            p3 = re.compile(r"^\d{2}-\d{2} \d{2}:\d{2}:51")
             count_3 = sum(1 for l in self.lines if p3.search(l))
 
             # 1.4: Összes lowmemorykiller taget tartalmazó sor
-            p4 = re.compile(r"\blowmemorykiller\b")
+            p4 = re.compile(r"^[0-9-]+ +[0-9:.]+ +[0-9]+ +[0-9]+ [IDVEFAW] lowmemorykiller *:")
             count_4 = sum(1 for l in self.lines if p4.search(l))
 
             # 1.5: 10:18:51 kor keletkező 221-es process id-jú sor
-            p5 = re.compile(r"^10-15 10:18:51\.\d+\s+221\b")
+            p5 = re.compile(r"^\d{2}-\d{2} 10:18:51\.\d+ +221\b")
             count_5 = sum(1 for l in self.lines if p5.search(l))
 
             # 1.6: Összes hibát tartalmazó sor (E)
-            p6 = re.compile(r"\s+E\s+")
+            p6 = re.compile(r"^[0-9-]+ +[0-9:.]+ +[0-9]+ +[0-9]+ E ")
             count_6 = sum(1 for l in self.lines if p6.search(l))
 
             # 1.7: Összes warning (W) amit a PackageManager küld
-            p7 = re.compile(r"\s+W\s+PackageManager\b")
+            p7 = re.compile(r"^[0-9-]+ +[0-9:.]+ +[0-9]+ +[0-9]+ W PackageManager *:")
             count_7 = sum(1 for l in self.lines if p7.search(l))
 
             # 1.8: Összes ExoPlayer-es debug (D) infó
-            p8 = re.compile(r"\s+D\s+.*ExoPlayer")
+            p8 = re.compile(r"^[0-9-]+ +[0-9:.]+ +[0-9]+ +[0-9]+ D [^:]*ExoPlayer[^:]*:")
             count_8 = sum(1 for l in self.lines if p8.search(l))
 
             # 1.9: Összes java állomány pozíciót tartalmazó hiba és warning (.java:)
-            p9 = re.compile(r"\s+[EW]\s+.*\.java:")
+            p9 = re.compile(r"^[0-9-]+ +[0-9:.]+ +[0-9]+ +[0-9]+ [EW] [^:]*:.*\.java:")
             count_9 = sum(1 for l in self.lines if p9.search(l))
 
             # 1.10: Összes olyan sor, ami tartalmazza a Thread szót a message részben
