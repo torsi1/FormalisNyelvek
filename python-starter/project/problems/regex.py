@@ -69,7 +69,7 @@ class RegexProblem(Problem):
             count_7 = sum(1 for l in self.lines if p7.search(l))
 
             # 1.8: Összes ExoPlayer-es debug (D) infó
-            p8 = re.compile(r"^[0-9-]+ +[0-9:.]+ +[0-9]+ +[0-9]+ D [^:]*ExoPlayer[^:]*:")
+            p8 = re.compile(r"\s+D\s+.*ExoPlayer")
             count_8 = sum(1 for l in self.lines if p8.search(l))
 
             # 1.9: Összes java állomány pozíciót tartalmazó hiba és warning (.java:)
