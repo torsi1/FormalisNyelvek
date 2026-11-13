@@ -85,7 +85,7 @@ class RegexProblem(Problem):
                 m = p10.match(l)
                 if m and m.group(6):
                     message_part = m.group(6)
-                    if re.search(r"\bThread\b", message_part):
+                    if re.search(r"Thread", message_part):
                         count_10 += 1
 
             results = [
